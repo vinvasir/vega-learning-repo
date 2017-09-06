@@ -19,5 +19,12 @@
     </select>
   </div>
 
+  <h2>Features</h2>
+  <div class="checkbox" *ngFor="let f of features">
+    <label for="feature-{{f.id}}">
+     <input type="checkbox" id="feature-{{f.id}}">  {{ f.name }}
+    </label>
+  </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
