@@ -20,7 +20,7 @@
         ]
       },     
       "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
+      "tsconfig": "../tsconfig.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
