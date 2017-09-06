@@ -8,7 +8,7 @@ export class FeatureService {
   constructor(private http: Http) { }
 
   getFeatures() {
-    this.http.get('/api/features')
+    return this.http.get('/api/features')
         .map(res => res.json());
   }
 }
