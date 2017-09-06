@@ -1,8 +1,14 @@
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operators/map';
 
 @Injectable()
 export class FeatureService {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
+  getFeatures() {
+    this.http.get('/api/features')
+        .map(res => res.json());
+  }
 }
