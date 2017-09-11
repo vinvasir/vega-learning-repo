@@ -2,6 +2,7 @@ using AutoMapper;
 using vega.Models;
 using vega.Controllers.Resources;
 using System.Linq;
+using static vega.Controllers.Resources.VehicleResource;
 
 namespace vega.Mapping
 {
@@ -13,6 +14,10 @@ namespace vega.Mapping
             CreateMap<Make, MakeResource>();
             CreateMap<Model, ModelResource>();
             CreateMap<Feature, FeatureResource>();
+            CreateMap<Vehicle, VehicleResource>()
+                .ForMember(vr => vr.Contact, opt => opt.MapFrom(v => 
+                    new ContactResource { Name = v.ContactName, Email = v.ContactEmail, Phone = v.ContactPhone }))
+                .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => vf.FeatureId)));
 
             // Serialized API resource to domain model
             CreateMap<VehicleResource, Vehicle>()
