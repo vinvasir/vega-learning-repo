@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using vega.Controllers.Resources;
@@ -19,12 +20,12 @@ namespace vega.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateVehicle([FromBody] VehicleResource vehicleResource)
+        public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
         {
             var vehicle = mapper.Map<VehicleResource, Vehicle>(vehicleResource);
 
             context.Vehicles.Add(vehicle);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
 
             return Ok(vehicle);
         }
