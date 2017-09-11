@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -25,6 +26,7 @@ namespace vega.Controllers
         public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
         {
             var vehicle = mapper.Map<VehicleResource, Vehicle>(vehicleResource);
+            vehicle.LastUpdate = DateTime.Now;
 
             context.Vehicles.Add(vehicle);
             await context.SaveChangesAsync();
